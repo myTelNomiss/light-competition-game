@@ -1,0 +1,6 @@
+﻿density,ESS_response_s,optimum_s,gap,bongers_cESS_status
+100,0.5333,0.3333,0.2,determined (analytic)
+400,0.7333,0.3333,0.4,determined (analytic)
+711,0.8666,0.3333,0.5333,determined (analytic)
+1600,1.0,0.3333,0.6667,saturated at s_max (still defined)
+6400,1.0,0.3333,0.6667,saturated at s_max (still defined)

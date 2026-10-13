@@ -1,0 +1,9 @@
+genotype,density,plants_per_m2,location,plant_height_cm_median,n,stat_letter,note
+M82,LD,3,Italy,45,9,c,digitized from Fig.6a median; approx +-3 cm
+M82,LD,3,Spain,47,9,a,digitized from Fig.6a median
+IL2-2,LD,3,Italy,47,9,c,digitized from Fig.6a median
+IL2-2,LD,3,Spain,58,9,b,digitized from Fig.6b median; field variability
+M82,HD,6,Italy,75,15,A,digitized from Fig.6a median
+M82,HD,6,Spain,82,13,A,digitized from Fig.6a median
+IL2-2,HD,6,Italy,68,14,B,digitized from Fig.6a median
+IL2-2,HD,6,Spain,68,14,B,digitized from Fig.6a median; shorter than M82 under HD

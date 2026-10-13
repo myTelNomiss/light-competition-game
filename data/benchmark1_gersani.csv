@@ -1,0 +1,4 @@
+﻿scenario,neighbors_m,cn,ESS_investment_s,optimum_s,overinvestment,per_capita_yield,yield_loss_percent
+Owner (m=0),0,独占空间,0.3333,0.3333,0.0,1.0333,0.0
+Pair (m=1),1,两株共享,0.3533,0.3333,0.02,1.0332,0.01
+Shared (m=9),9,10株共享,0.3933,0.3333,0.06,1.0323,0.1

@@ -1,0 +1,5 @@
+﻿conclusion,robustness_pct,n_interior
+C1_tragedy,100.0,3974
+C2_monotonic,100.0,3974
+C3_HD_gt_LD,100.0,3974
+C4_sopt_positive,100.0,3974

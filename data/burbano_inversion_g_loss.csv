@@ -1,0 +1,5 @@
+﻿assumed_gain_g,scenario,inferred_WT_tragedy_loss_pct,observed_HD_Spain_gain_pct
+0.0,g=0 (full suppression),11.9,13.5
+0.35,g=0.35 (pif457-like),13.3,13.5
+0.55,g=0.55 (IL2-2 auxin),16.2,13.5
+0.7,g=0.70 (mild PIF),20.9,13.5

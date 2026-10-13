@@ -1,0 +1,9 @@
+genotype,density,plants_per_m2,location,yield_t_ha_median,n,stat_letter,note
+M82,LD,3,Italy,95,4,a,digitized from Fig.6b median; approx +-4 t/ha
+M82,LD,3,Spain,53,4,b,digitized from Fig.6b median; low outlier (small n field variability)
+IL2-2,LD,3,Italy,85,4,a,digitized from Fig.6b median
+IL2-2,LD,3,Spain,92,3,a,digitized from Fig.6b median
+M82,HD,6,Italy,145,4,B,digitized from Fig.6b median
+M82,HD,6,Spain,148,4,B,digitized from Fig.6b median
+IL2-2,HD,6,Italy,132,3,B,digitized from Fig.6b median
+IL2-2,HD,6,Spain,168,3,A,digitized from Fig.6b median; significantly highest group
