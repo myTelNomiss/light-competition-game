@@ -25,15 +25,20 @@ class EvolutionSimulation:
                  mutation_rate: float = 0.01,
                  mutation_sd: float = 0.02,
                  initial_mean: float = 0.5,
-                 initial_sd: float = 0.1):
+                 initial_sd: float = 0.1,
+                 seed: int = 42):
         self.N = N
         self.p = p
         self.pop_size = pop_size
         self.mutation_rate = mutation_rate
         self.mutation_sd = mutation_sd
 
+        # Dedicated, seeded RNG so every run is exactly reproducible
+        # (independent of the global numpy random state).
+        self.rng = np.random.default_rng(seed)
+
         # 初始化种群策略
-        self.strategies = np.random.normal(initial_mean, initial_sd, pop_size)
+        self.strategies = self.rng.normal(initial_mean, initial_sd, pop_size)
         self.strategies = np.clip(self.strategies, p.s_min, p.s_max)
 
         # 记录历史
@@ -61,17 +66,17 @@ class EvolutionSimulation:
 
         if total_fitness < 1e-10:
             # 所有个体适合度极低，随机保留
-            parents = np.random.randint(0, self.pop_size, self.pop_size)
+            parents = self.rng.integers(0, self.pop_size, self.pop_size)
         else:
             # 轮盘赌选择
             probabilities = fitnesses_pos / total_fitness
-            parents = np.random.choice(self.pop_size, size=self.pop_size,
-                                        replace=True, p=probabilities)
+            parents = self.rng.choice(self.pop_size, size=self.pop_size,
+                                      replace=True, p=probabilities)
 
         # 产生后代 + 突变
         offspring = self.strategies[parents].copy()
-        mutation_mask = np.random.random(self.pop_size) < self.mutation_rate
-        mutations = np.random.normal(0, self.mutation_sd, self.pop_size)
+        mutation_mask = self.rng.random(self.pop_size) < self.mutation_rate
+        mutations = self.rng.normal(0, self.mutation_sd, self.pop_size)
         offspring[mutation_mask] += mutations[mutation_mask]
         offspring = np.clip(offspring, self.p.s_min, self.p.s_max)
 

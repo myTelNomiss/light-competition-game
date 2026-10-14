@@ -40,7 +40,7 @@ cd src
 python main.py
 ```
 
-Running `main.py` executes the analytic model, the individual-based simulation, the pairwise-invasion analysis, the molecular mapping, the literature benchmark, the field inversion, and the global sensitivity analysis, and then regenerates all 19 CSV files in `data/` and all figures in `figures/`. The Monte Carlo analysis uses 6,000 parameter combinations with a fixed random seed (42), of which 3,974 interior solutions are retained; all reported numbers are reproducible from the committed code and data. The four structural predictions hold in every interior sample under the assumed sign structure (zero-sum competitive term, γ > 0).
+Running `main.py` executes the analytic model, the individual-based simulation, the pairwise-invasion analysis, the molecular mapping, the literature benchmark, the field inversion, and the global sensitivity analysis, and then regenerates all 19 CSV files in `data/` and all figures in `figures/`. Both the individual-based evolutionary simulation (each run uses a dedicated `numpy.random.Generator` seeded with 42) and the Monte Carlo analysis (6,000 parameter combinations, seed 42, of which 3,974 interior solutions are retained) are deterministic, so every reported number is reproducible bit-for-bit from the committed code and data. The four structural predictions hold in every interior sample under the assumed sign structure (zero-sum competitive term, γ > 0).
 
 Individual modules can also be run from `src/` (e.g. `python model.py`, `python sensitivity.py`).
 

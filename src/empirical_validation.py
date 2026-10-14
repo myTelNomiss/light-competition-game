@@ -230,12 +230,20 @@ def plot_validation(res: dict, gp: GameParams, fig_path: str):
     ax.axhline(Gobs, ls="--", color="#D62728", lw=1.4)
     ax.text(1, Gobs + 0.4, f"HD-Spain observed = {Gobs:.1f}%",
             color="#D62728", fontsize=8)
-    # 反演的 L 可行区间
-    L_lo = 100 * res["L_min"]
-    L_hi = 100 * loss_from_gain(res["G_hd_spain"], 0.55)
-    ax.axvspan(L_lo, L_hi, color="#D62728", alpha=0.12)
-    ax.text((L_lo + L_hi) / 2, 2, f"inferred L\n{L_lo:.0f}–{L_hi:.0f}%",
-            ha="center", fontsize=8, color="#D62728")
+    # v5: 区分两个层次——g=0 给出不依赖分子先验的数据驱动硬下界；
+    # g=0.35–0.55（分子表征先验）给出条件区间。二者不得混为一个带。
+    L_hard = 100 * res["L_min"]                       # g=0: data-only lower bound (11.9%)
+    L_cond_lo = 100 * loss_from_gain(res["G_hd_spain"], 0.35)  # pif457
+    L_cond_hi = 100 * loss_from_gain(res["G_hd_spain"], 0.55)  # IL2-2
+    # 条件区间（molecular priors）
+    ax.axvspan(L_cond_lo, L_cond_hi, color="#D62728", alpha=0.15)
+    ax.text((L_cond_lo + L_cond_hi) / 2, 2.5,
+            f"conditional L\n{L_cond_lo:.0f}–{L_cond_hi:.0f}% (g=0.35–0.55)",
+            ha="center", fontsize=7.5, color="#D62728")
+    # 数据驱动硬下界（g=0）
+    ax.axvline(L_hard, color="#444444", ls=":", lw=1.6)
+    ax.text(L_hard, 20.6, f"data-only lower bound\nL ≥ {L_hard:.1f}% (g=0)",
+            ha="center", va="top", fontsize=7.5, color="#444444")
     # LD 点（增益不显著，置于 L 很小处的 0 带）
     ax.axhspan(-12, 0, color="#1F77B4", alpha=0.06)
     ax.text(20, -8, "LD: gains ≈ 0 (n.s.)", fontsize=8, color="#1F77B4")
